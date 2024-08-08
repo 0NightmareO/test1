@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { FilterNewsComponent } from './filter-news.component';
+
+describe('FilterNewsComponent', () => {
+  let component: FilterNewsComponent;
+  let fixture: ComponentFixture<FilterNewsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [FilterNewsComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(FilterNewsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
