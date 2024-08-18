@@ -1,0 +1,169 @@
+<!-- Form lớn chứa tất cả các phần --> 
+<form class="row g-3 big-form"[formGroup]="form" (ngSubmit)="onSubmit()" >
+  <!-- Phần 1: Thông tin cơ bản -->
+  <div class="form-section row" formGroupName="address" >
+    <p>Thông tin cơ bản</p>
+    <div class="btn-group mb-4 mt-3" role="group" aria-label="Basic example">
+      <a 
+        class="btn" 
+        (click)="isForRent = false" 
+        [ngClass]="{'active-btn': !isForRent, 'default-btn': isForRent}">
+        Tìm người ở ghép
+      </a>
+      <a 
+        class="btn" 
+        (click)="toggleForRent()" 
+        [ngClass]="{'active-btn': isForRent, 'default-btn': !isForRent}">
+        Cho thuê
+      </a>
+    </div>
+    <div class="col-md-12 mb-3" *ngIf="isForRent">
+      <label for="inputType" class="form-label">Loại bất động sản</label>
+      <select id="inputType" class="form-select">
+        <option value="phong-tro" selected>Phòng trọ</option>
+        <option value="nha-nguyen-can">Nhà nguyên căn</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="inputProvince" class="form-label">Tỉnh/Thành</label>
+      <select id="inputProvince" class="form-select" formControlName="province" (change)="onProvinceChange()">
+        <option *ngFor="let province of provinces" [value]="province.Id">{{ province.Name }}</option>
+      </select>
+      <div *ngIf="form.get('address.province')?.invalid && form.get('address.province')?.touched">
+        <small *ngIf="form.get('address.province')?.errors?.['required']">Province is required.</small>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="inputDistrict" class="form-label">Quận/Huyện</label>
+      <select id="inputDistrict" class="form-select" formControlName="district" (change)="onDistrictChange()">
+        <option *ngFor="let district of districts" [value]="district.Id">{{ district.Name }}</option>
+      </select>
+      <div *ngIf="form.get('address.district')?.invalid && form.get('address.district')?.touched">
+        <small *ngIf="form.get('address.district')?.errors?.['required']">District is required.</small>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="inputWard" class="form-label">Phường/Xã</label>
+      <select id="inputWard" class="form-select" formControlName="ward" (change)="updateFull_address()">
+        <option *ngFor="let ward of wards" [value]="ward.Id">{{ ward.Name }}</option>
+      </select>
+      <div *ngIf="form.get('address.ward')?.invalid && form.get('address.ward')?.touched">
+        <small *ngIf="form.get('address.ward')?.errors?.['required']">Ward is required.</small>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-3">
+      <label for="inputDetail" class="form-label">Địa chỉ cụ thể</label>
+      <input type="text" class="form-control"  id="inputDetail" formControlName="detail" (input)="updateFull_address()" required>
+      <div *ngIf="form.get('address.detail')?.invalid && form.get('address.detail')?.touched">
+        <small *ngIf="form.get('address.detail')?.errors?.['required']">Detail is required.</small>
+      </div>
+    </div>
+    
+    
+    <div class="col-md-10">
+      <label for="inputAddress" class="form-label">Địa chỉ chính xác</label>
+      <input type="text" class="form-control" id="inputAddress" [value]="full_address" name="full_address | capitalizeFirstLetter" readonly>
+     
+    </div>
+  </div>
+
+  <!-- Phần 2: Thông tin bài viết -->
+  <div class="form-section row " >
+    <p>Thông tin bài viết</p>
+    <div class="mb-3">
+      <label for="title" class="form-label">Tiêu đề</label>
+      <textarea class="form-control" id="title" rows="1" formControlName="title"></textarea>
+      <div *ngIf="form.get('title')?.invalid && (form.get('title')?.dirty || form.get('title')?.touched)">
+        <small class="text-danger" *ngIf="form.get('title')?.errors?.['required']">Tiêu đề là bắt buộc.</small>
+        <small class="text-danger" *ngIf="form.get('title')?.errors?.['minlength']">Tiêu đề phải có ít nhất 30 ký tự.</small>
+        <small class="text-danger" *ngIf="form.get('title')?.errors?.['maxlength']">Tiêu đề không được vượt quá 99 ký tự.</small>
+      </div>
+      <p>Tối thiểu 30 ký tự, tối đa 99 ký tự</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô tả</label>
+      <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+      <div *ngIf="form.get('description')?.invalid && (form.get('description')?.dirty || form.get('description')?.touched)">
+        <small class="text-danger" *ngIf="form.get('description')?.errors?.['required']">Mô tả là bắt buộc.</small>
+        <small class="text-danger" *ngIf="form.get('description')?.errors?.['minlength']">Mô tả phải có ít nhất 30 ký tự.</small>
+        <small class="text-danger" *ngIf="form.get('description')?.errors?.['maxlength']">Mô tả không được vượt quá 3000 ký tự.</small>
+      </div>
+      <p>Tối thiểu 30 ký tự, tối đa 3000 ký tự</p>
+    </div>
+    
+  </div>
+
+  <!-- Phần 3: Thông tin bất động sản -->
+  <div class="form-section row" >
+    <p>Thông tin bất động sản</p>
+    <div class="mb-3">
+      <label for="acreage" class="form-label">Diện tích</label>
+      <div class="input-group">
+        <input type="number" class="form-control" id="acreagea" formControlName="acreage" aria-describedby="acreagea-addon">
+        <span class="input-group-text" id="acreage-addon">m<sup>2</sup></span>
+      </div>
+      <div *ngIf="form.get('acreage')?.errors?.['required'] && form.get('acreage')?.touched" class="text-danger">
+        Vui lòng điền diện tích
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá tiền</label>
+      <div class="input-group">
+        <input type="number" class="form-control" id="price" formControlName="price" aria-describedby="price-addon">
+        <span class="input-group-text" id="price-addon">VND</span>
+      </div>
+      <div *ngIf="form.get('price')?.errors?.['required'] && form.get('price')?.touched" class="text-danger">
+        Vui lòng điền giá tiền
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Phần 4: Hình ảnh & video -->
+  <div class="form-section row">
+    <p>Hình ảnh & video</p>
+    <ul>
+      <li>Đăng tối thiểu 6 ảnh</li>
+      <li>Hãy dùng ảnh thật, không trùng, không chèn SĐT</li>
+      <li>Mỗi ảnh kích thước tối thiểu 100x100 px, tối đa 15 MB</li>
+    </ul>
+    <div class="post_img">
+      <div class="btn-img" (click)="onSelectImage()">
+        <img src="public/upimg.png" alt="Add Image">
+        <span>Bấm để thêm ảnh</span>
+      </div>
+      <div class="preview-images">
+        <div *ngFor="let img of preview_images; let i = index">
+          <img [src]="img" alt="Selected Image" style="width: 100px;">
+          <button type="button" class="remove-btn" (click)="removeImage(i); $event.stopPropagation()">X</button>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="imageUpload" multiple (change)="onImageSelected($event)" accept="image/*" style="display:none;">
+  </div>
+  
+  <!-- Phần 5: Thông tin liên hệ -->
+  <div class="form-section row" >
+    <p>Thông tin liên hệ</p>
+    <div class="col-md-6 custom-text">
+      <label for="contact_name" class="form-label">Tên liên hệ</label>
+      <input class="form-control" id="contact_name" [value]="contact_name" readonly *ngIf="contact_name">
+      <span><i class="bi bi-exclamation-triangle icon1"></i> Chỉ có thể chỉnh sửa trong hồ sơ cá nhân</span>
+    </div>
+    <div class="col-md-6">
+      <label for="contact" class="form-label">Số điện thoại</label>
+      <input class="form-control" id="contact" formControlName="contact" >
+    </div>
+  </div>
+
+  <!-- Nút gửi -->
+  <div class="btn_submit">
+    <button type="submit">Đăng tin <i class="bi bi-arrow-right-short icon2"></i></button>
+  </div>
+</form>

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FindRoommateComponent } from './find-roommate/find-roommate.component';
-import { EditProfileContentComponent } from './edit-profile-content/edit-profile-content.component';
-import { RegisterOwnerContentComponent } from './register-owner-content/register-owner-content.component';
-import { ChangePasswordContentComponent } from './change-password-content/change-password-content.component';
-import { NewsListContentComponent } from './news-list-content/news-list-content.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { FindRoommateComponent } from './components/find-roommate/find-roommate.component';
+import { EditProfileContentComponent } from './components/edit-profile-content/edit-profile-content.component';
+import { RegisterOwnerContentComponent } from './components/register-owner-content/register-owner-content.component';
+import { ChangePasswordContentComponent } from './components/change-password-content/change-password-content.component';
+import { NewsListContentComponent } from './components/news-list-content/news-list-content.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 
 const routes: Routes = [

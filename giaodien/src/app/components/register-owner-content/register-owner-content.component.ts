@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UploadService } from '../services/upload/upload.service';
+import { UploadService } from '../../services/upload/upload.service';
 
 @Component({
   selector: 'app-register-owner-content',

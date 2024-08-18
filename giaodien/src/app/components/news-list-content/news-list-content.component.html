@@ -47,55 +47,55 @@
   </ul>
 </div>
 </div>
-<div *ngFor="let card of cards" class="card mb-3" [ngClass]="'card' + card.id">
-    <div class="row g-0 content_body">
-      <div class="col-12 col-md-4">
-        <img src="public/anh1.png" class="img-fluid rounded-start">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <div class="row mb-2 gr-text">
-            <span class="col-3 col-md-2">Cho thuê </span>
-            <h1 class="col-md-9 card-title">{{card.title}}</h1>
+<div *ngFor="let card of data" class="card mb-3" [ngClass]="'card' + card.id">
+  <div class="row g-0 content_body">
+    <div class="col-12 col-md-4">
+      <img src="public/anh1.png" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="row mb-2 gr-text">
+          <span class="col-3 col-md-2">Cho thuê</span>
+          <h1 class="col-md-9 card-title">{{ card.title }}</h1>
+        </div>
+        <p class="card-text"><i class="bi bi-geo-alt"></i> {{ card.address }}</p>
+        <div class="row g-2">
+          <p class="col-5 col-md-4 card-text text_custom">{{ card.price }} triệu/tháng</p>
+          <p class="col-3 col-md-2 card-text text_custom">{{ card.acreage }}</p>
+        </div>
+        <div class="row g-0 gr_status">
+          <div class="col-3 col-md-2">
+            <p class="card-text">Mã tin</p>
+            <p class="card-text">{{ card.id }}</p>
           </div>
-            <p class="card-text"><i class="bi bi-geo-alt"></i> {{card.address}}</p>
-            <div class="row g-2">
-            <p class="col-5 col-md-4 card-text text_custom">{{card.price}} triệu/tháng</p>
-            <p class="col-3 col-md-2 card-text text_custom">{{card.size}}</p>
-            </div>
-            <div class="row g-0 gr_status " >
-            <div class="col-3 col-md-2">
-              <p class="card-text">Mã tin</p>
-              <p class="card-text">{{ card.code }}</p>
-            </div>
-            <div class="col-4 col-md-3">
-              <p class="card-text">Ngày đăng</p>
-              <p class="card-date">{{ card.date }}</p>
-            </div>
-            <div class="col-4 col-md-3">
-              <p class="card-text">Trạng thái</p>
-              <p [ngClass]="{'text-danger': card.isHidden}" class="card-text text_status">{{ card.status }}
-            </div>
-            
-              <div class="col-10 col-md-4 d-flex justify-content-end gr-btn">
-                <button *ngIf="!card.isHidden" type="button" class="btn btn1" (click)="hideItem(card.id)">
-                  <span>Ẩn tin </span>
-                  <i class="bi bi-eye-slash"></i>
-                </button>
-                <button *ngIf="!card.isHidden" type="button" class="btn btn1" (click)="editItem(card.id)">
-                  <span>Sửa tin </span>
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button *ngIf="card.isHidden" type="button" class="btn btn1" (click)="repostItem(card.id)">
-                  <span>Đăng lại </span>
-                  <i class="bi bi-arrow-repeat"></i>
-                </button>
-              </div>
-            </div>
+          <div class="col-4 col-md-3">
+            <p class="card-text">Ngày đăng</p>
+            <p class="card-date">{{ card.createDate }}</p>
+          </div>
+          <div class="col-4 col-md-3">
+            <p class="card-text">Trạng thái</p>
+            <p [ngClass]="{'text-danger': card.isHidden}" class="card-text text_status">{{ card.status }}</p>
+          </div>
+          <div class="col-10 col-md-4 d-flex justify-content-end gr-btn">
+            <button *ngIf="!card.isHidden" type="button" class="btn btn1" (click)="hideItem(card.id)">
+              <span>Ẩn tin</span>
+              <i class="bi bi-eye-slash"></i>
+            </button>
+            <button *ngIf="!card.isHidden" type="button" class="btn btn1" (click)="editItem(card.id)">
+              <span>Sửa tin</span>
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button *ngIf="card.isHidden" type="button" class="btn btn1" (click)="repostItem(card.id)">
+              <span>Đăng lại</span>
+              <i class="bi bi-arrow-repeat"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
 
 
 

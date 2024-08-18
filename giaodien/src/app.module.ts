@@ -11,20 +11,36 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatSlider,  } from '@angular/material/slider';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
-import { NavbarComponent } from './app/navbar/navbar.component';
-import { FooterComponent } from './app/footer/footer.component';
-import { NewsListContentComponent } from './app/news-list-content/news-list-content.component';
-import { EditPostComponent } from './app/edit-post/edit-post.component';
-import { EditProfileContentComponent } from './app/edit-profile-content/edit-profile-content.component';
-import { ChangePasswordContentComponent } from './app/change-password-content/change-password-content.component';
-import { RegisterOwnerContentComponent } from './app/register-owner-content/register-owner-content.component';
-import { FindRoommateComponent } from './app/find-roommate/find-roommate.component';
-import { HomepageComponent } from './app/homepage/homepage.component';
-import { NewsComponent } from './app/news/news.component';
-import { FilterNewsComponent } from './app/filter-news/filter-news.component';
+import { NavbarComponent } from './app/components/navbar/navbar.component';
+import { FooterComponent } from './app/components/footer/footer.component';
+import { NewsListContentComponent } from './app/components/news-list-content/news-list-content.component';
+import { EditPostComponent } from './app/components/edit-post/edit-post.component';
+import { EditProfileContentComponent } from './app/components/edit-profile-content/edit-profile-content.component';
+import { ChangePasswordContentComponent } from './app/components/change-password-content/change-password-content.component';
+import { RegisterOwnerContentComponent } from './app/components/register-owner-content/register-owner-content.component';
+import { FindRoommateComponent } from './app/components/find-roommate/find-roommate.component';
+import { HomepageComponent } from './app/components/homepage/homepage.component';
+import { NewsComponent } from './app/components/news/news.component';
+import { FilterNewsComponent } from './app/components/filter-news/filter-news.component';
+import { CapitalizeFirstLetterPipe } from './app/pipe/capitalize-first-letter.pipe';
+import { ApproveLandlordApplicationComponent } from './app/components/approve-landlord-application/approve-landlord-application/approve-landlord-application.component';
+import { EditUserComponent } from './app/components/edit-user/edit-user/edit-user.component';
+import { HistoryComponent } from './app/components/history/history.component';
+import { MenuComponent } from './app/components/menu/menu.component';
+import { NavbarUserComponent } from './app/components/navbar-user/navbar-user.component';
+import { PostManagementComponent } from './app/components/post-management/post-management.component';
+import { RegisterComponent } from './app/components/register/register.component';
+import { RentRoomComponent } from './app/components/rent-room/rent-room.component';
+import { RoomDetailComponent } from './app/components/room-detail/room-detail.component';
+import { RoommateSearchDetailComponent } from './app/components/roommate-search-detail/roommate-search-detail.component';
+import { UiAdminComponent } from './app/components/ui-admin/ui-admin.component';
+import { UiUserComponent } from './app/components/ui-user/ui-user.component';
+import { UserListComponent } from './app/components/user-list/user-list.component';
+import { ListFavoritePostComponent } from './app/components/list-favorite-post/list-favorite-post.component';
 
 
 
@@ -44,7 +60,22 @@ import { FilterNewsComponent } from './app/filter-news/filter-news.component';
     FindRoommateComponent,
     HomepageComponent,
     NewsComponent,
-    FilterNewsComponent
+    FilterNewsComponent,
+    CapitalizeFirstLetterPipe,
+    ApproveLandlordApplicationComponent,
+    EditUserComponent,
+    HistoryComponent,
+    MenuComponent,
+    NavbarUserComponent,
+    PostManagementComponent,
+    RegisterComponent,
+    RentRoomComponent,
+    RoomDetailComponent,
+    RoommateSearchDetailComponent,
+    UiAdminComponent,
+    UiUserComponent,
+    UserListComponent,
+    ListFavoritePostComponent,
     
   ],
   imports: [
@@ -58,7 +89,8 @@ import { FilterNewsComponent } from './app/filter-news/filter-news.component';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    MatSlider
+    MatSliderModule
+   
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,6 +1,7 @@
 *{
     font-size: 16px;
     color: black;
+   
 }
 button:focus,
 input:focus,
@@ -11,51 +12,57 @@ a:focus {
 }
 
 body {
-    margin: 0;
     line-height: normal;
 }
-form{
+.big-form{
     display: flex;
+    margin-top: 4%;
     padding-left: 10px;
     padding-right: 10px;
     
 }
-.form1{
-    position: relative;
-    padding: 30px 10px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    background-color: #fff;
-    width: 75%;
-    margin: 60px auto 20px;
-    height: auto;
+.text-danger{
+    font-size: 14px;
+
 }
-
-.form2,
-.form3,
-.form4,
-.form5{
-
+.preview-images {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .preview-images > div {
     position: relative;
-    padding: 30px 10px;
+    margin: 5px;
+  }
+  
+  button.remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 50%;
+  }
+.form-section{
+    position: relative;
+    padding: 30px 20px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     background-color: #fff;
     width: 75%;
-    margin: 20px auto; /* cacnhs căn giữa chuẩn*/
+    margin: 0px auto 2%; 
     height: auto;
 }
 sup{
     font-size: 12px;
 }
 p {
-  
     font-weight: 600;
     font-size: 30px;
-    margin-bottom: 0;
-}
-#inputAddress {
-    margin-bottom: 20px;
 }
 .form-label::after {
     content: ' *';
@@ -71,36 +78,12 @@ p {
     text-align: left;
     padding-top: 10px;
 }
-#room{
-    margin: 0px;
-}
-.btn-group1{
-    padding-left: 300px;
-
-}
-.btn4{
-    background-color: rgba(45, 95, 115, 1);
-    color: #fff;
-    font-weight: 600;
-}
-.btn5{
-    border : 2px solid rgba(45, 95, 115, 1);
-    
-    
-}
-#inputCost,
-#inputApartment_number,
-#inputAddress
-#inputType {
-    height: 37px;
-}
-.form4 li{
+li{
     font-size: 14px;
     margin-left: 20px;
     margin-top: 10px;
 }
-.post_img,
-.post_video{
+.post_img{
     position: relative;
     display: flex;
     width: 90%;
@@ -112,33 +95,28 @@ p {
     margin: 20px auto;
     
 }
-.post_img img,
-.post_video img{
+.post_img img{
     margin-top: 20px;
     width: 20.5%;
 }
-.post_img p,
-.post_video p{
+.post_img p{
     font-size: 14px;
     font-weight: 100;
     color: rgba(135, 135, 135, 1);
     margin-bottom: 20px;
 
 }
-.form5 span, .form5 .icon1{
+.custom-text span, .custom-text .icon1{
     font-size: 14px;
     font-weight: 100;
     color: rgba(135, 135, 135, 1) ;
-}
-.col1 {
-    margin-bottom: 40px;
 }
 .btn_submit {
     display: flex;
     justify-content: right;
     width: 75%;
     margin: 20px auto;
-    height: 2%;
+    height: 45px;
     font-weight: 600;
 
     }
@@ -151,23 +129,24 @@ p {
     font-weight: 600;
 
 }
-#inputContact,
-#inputPhone,
+#contactName,
+#contactPhone,
 #inputAddress {
-    pointer-events: none; /* Vô hiệu hóa mọi tương tác với trường đầu vào */
-    background-color: #e9ecef; /* Đặt màu nền để thể hiện trường không thể chỉnh sửa */
-    cursor: default; /* Đổi con trỏ chuột thành dạng mặc định */
+    pointer-events: none; 
+    background-color: #e9ecef; 
+    cursor: default; 
 }
 
 .default-btn {
     border: 2px solid rgba(45, 95, 115, 1);
     font-weight: 600;
-    color: black; /* Màu chữ mặc định */
+    color: black;
   }
   
   .active-btn {
     background-color: rgba(45, 95, 115, 1);
     color: #fff;
     font-weight: 600;
-    border: none; /* Xóa viền khi nút được kích hoạt */
+    border: none; 
   }  
+  
